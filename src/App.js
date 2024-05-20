@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import React, { Suspense } from 'react';
+import Layout from './pages/Layout';
+
+const Login = React.lazy(()=>import("./pages/Login"))
+const Admin = React.lazy(()=>import("./pages/Admin"))
+const Client = React.lazy(()=>import("./pages/Client"))
+
+
+
 
 function App() {
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <BrowserRouter>
+           <Suspense fallback={<div>Loading...</div>}>
+           <Routes>
+            <Route path='/' element={<Layout/>}>
+            <Route path='/' element={<Client/>}/>
+              <Route path='/admin' element={<Admin/>}/> 
+            </Route>
+            <Route path='/login' element={<Login/>}/>
+           </Routes>
+           </Suspense>
+        </BrowserRouter>
     </div>
   );
 }
