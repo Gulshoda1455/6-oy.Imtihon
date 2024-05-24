@@ -1,5 +1,5 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { NavLink, Outlet } from 'react-router-dom'
+
 import Contact from "../assets/images/contact.svg"
 import Lupa from "../assets/images/search.svg"
 import Heart from '../assets/images/heart.love.svg'
@@ -8,13 +8,7 @@ import Korzinka from '../assets/images/korzinkaFur.svg'
 
 
  const Layout=()=>{
-      const navigate = useNavigate();
-     useEffect(()=>{
-         const token = localStorage.getItem("token");
-         if(!token){
-            navigate("/login")
-         }
-     },[])
+      
 
     return (
         <div>

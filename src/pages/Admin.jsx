@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { backendUrl } from './BackendUrl';
 import { useNavigate } from 'react-router-dom';
+import { useMobile } from '../hooks/useMobile';
 
 function Admin() {
     const [title, setTitle] = useState("");
@@ -14,6 +15,10 @@ function Admin() {
     const [size, setSize] = useState("");
 
     const navigate = useNavigate();
+
+
+   
+    const isMobile = useMobile();
 
     const handleSubmit = async () => {
         console.log(title, image, subtitle, description, rate, price, color, size);
@@ -58,7 +63,10 @@ function Admin() {
     return (
         <div className='h-screen w-screen bg-gray-200 flex justify-center items-center  py-[500px] '>
             <div className='p-4 shadow-xl bg-white w-[40%] rounded-md'>
-                <h1 className='text-center mb-4'>Products card</h1>
+                <h1 className='text-center mb-2'>
+                    Products card 
+                    </h1>
+                    <h2 className='mb-3'>{isMobile ? "From Mobile device" :"From Desktop"}</h2>
                 <div className='mb-3'>
                     <label htmlFor="product-name">Product name</label>
                     <br />

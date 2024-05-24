@@ -2,7 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { backendUrl } from './BackendUrl';
 
+
+
+
+
 function Client() {
+
+    
+    
     const [products, setProducts]= useState([]) 
     useEffect(()=>{
          async function getCategories(){
